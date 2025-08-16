@@ -1,0 +1,13 @@
+import InteractiveSection from '../components/InteractiveSection';
+
+function Home() {
+  return (
+    <div>
+      {/* ...existing content... */}
+      <InteractiveSection />
+      {/* ...existing content... */}
+    </div>
+  );
+}
+
+export default Home;

@@ -19,6 +19,7 @@ import authRoutes from './routes/auth.js';
 import timetableRoutes from './routes/timetable.js';
 import adminRoutes from './routes/admin.js';
 import studentRoutes from './routes/student.js';
+import { authenticateJWT, authorizeRoles } from './routes/auth.js';
 
 app.get('/', (req, res) => {
   res.send('HackHeritage Timetable Backend is running!');
@@ -26,8 +27,8 @@ app.get('/', (req, res) => {
 
 app.use('/api/auth', authRoutes);
 app.use('/api/timetable', timetableRoutes);
-app.use('/api/admin', adminRoutes);
-app.use('/api/student', studentRoutes);
+app.use('/api/admin', authenticateJWT, authorizeRoles('admin'), adminRoutes);
+app.use('/api/student', authenticateJWT, authorizeRoles('student'), studentRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
