@@ -1,0 +1,65 @@
+{
+  "info": {
+    "name": "HH310 Timetable & Attendance API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Register",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": {"raw": "{{baseUrl}}/api/auth/register", "host": ["{{baseUrl}}"], "path": ["api", "auth", "register"]},
+        "body": {"mode": "raw", "raw": "{\n  \"name\": \"Test User\",\n  \"email\": \"test@hh310.com\",\n  \"password\": \"testpass\",\n  \"role\": \"student\"\n}"}
+      }
+    },
+    {
+      "name": "Login",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": {"raw": "{{baseUrl}}/api/auth/login", "host": ["{{baseUrl}}"], "path": ["api", "auth", "login"]},
+        "body": {"mode": "raw", "raw": "{\n  \"email\": \"test@hh310.com\",\n  \"password\": \"testpass\"\n}"}
+      }
+    },
+    {
+      "name": "Create Timetable",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": {"raw": "{{baseUrl}}/api/timetable/create", "host": ["{{baseUrl}}"], "path": ["api", "timetable", "create"]},
+        "body": {"mode": "raw", "raw": "{\n  \"title\": \"Sample Timetable\",\n  \"slots\": [\"9AM-10AM\", \"10AM-11AM\"],\n  \"createdBy\": \"<user_id>\"\n}"}
+      }
+    },
+    {
+      "name": "Get Timetables",
+      "request": {
+        "method": "GET",
+        "url": {"raw": "{{baseUrl}}/api/timetable/", "host": ["{{baseUrl}}"], "path": ["api", "timetable"]}
+      }
+    },
+    {
+      "name": "Mark Attendance",
+      "request": {
+        "method": "POST",
+        "header": [{"key": "Content-Type", "value": "application/json"}],
+        "url": {"raw": "{{baseUrl}}/api/attendance/mark", "host": ["{{baseUrl}}"], "path": ["api", "attendance", "mark"]},
+        "body": {"mode": "raw", "raw": "{\n  \"user\": \"<user_id>\",\n  \"date\": \"2025-08-16\",\n  \"method\": \"qr\",\n  \"status\": \"present\"\n}"}
+      }
+    },
+    {
+      "name": "Get Attendance",
+      "request": {
+        "method": "GET",
+        "url": {"raw": "{{baseUrl}}/api/attendance/", "host": ["{{baseUrl}}"], "path": ["api", "attendance"]}
+      }
+    },
+    {
+      "name": "Generate Report",
+      "request": {
+        "method": "GET",
+        "url": {"raw": "{{baseUrl}}/api/report/generate", "host": ["{{baseUrl}}"], "path": ["api", "report", "generate"]}
+      }
+    }
+  ]
+}
